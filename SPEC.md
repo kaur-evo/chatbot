@@ -8,7 +8,7 @@
 
 - Component: `MrEvoconChat` (organism)
 - Layout: vertical flex — header → scrollable message area → footer (input + privacy)
-- Desktop: 440×720px, floating bottom-right, 12px border-radius, `max-height: calc(100vh - 100px)`
+- Desktop: 440×720px, floating bottom-right, 8px border-radius, `max-height: calc(100vh - 100px)`
 - Mobile (<600px): fullscreen `inset: 0`, no border-radius
 - Background: `--v-theme-input-background` (#F5F5F5)
 - Shadow: card elevation (`--ev-shadow-card`)
@@ -32,7 +32,7 @@
 - Left: support icon (`mdiContactSupport`, 24×24, green `--v-theme-primary`)
 - Title: "AI Support" — 16px / 22px / 600 (label-large weight), black
 - Subtitle: "Powered by Evocon" — 12px / 16px / 400 (body-small), `--v-theme-secondary-dark` (#707070)
-- Right: close button (`mdiClose`, 36×36 hit area, circular, hover shows `--v-theme-quaternary-dark` background)
+- Right: close button (`mdiClose`, 36×36 hit area, circular, `--v-theme-icon-default` (#707070), hover shows `--v-theme-quaternary-dark` background)
 
 ---
 
@@ -74,7 +74,7 @@
 ## Send Button
 
 - Icon-only button (`mdiSend`), 36×36 hit area, circular, inside the input field row
-- Color: `--v-theme-primary-dark` (#212121)
+- Color: `--v-theme-icon-default` (#707070)
 
 Reactive states based on `input.value`:
 
@@ -136,14 +136,16 @@ user types → send (click or Enter without Shift)
 - Border-radius: 8px 4px 8px 8px (top-left rounded, top-right pointed)
 - Shadow: card-level elevation
 - Max-width: 373px
+- Padding: 8px 16px
 - Typography: 14px / 20px / 400 (body-medium)
 
 ### Bot Bubble
 - Background: white (`--v-theme-white`)
 - Text color: `--v-theme-primary-dark` (#212121)
-- Border-radius: 4px 12px 12px 12px (top-left pointed, rest rounded)
+- Border-radius: 4px 8px 8px 8px (top-left pointed, rest rounded)
 - Shadow: `0px 1px 3px rgba(0,0,0,0.2), 0px 2px 2px rgba(0,0,0,0.12), 0px 0px 2px rgba(0,0,0,0.14)`
 - Max-width: 373px
+- Padding: 8px 16px
 - Typography: 14px / 20px / 400 (body-medium)
 - Content: rendered markdown (via `marked.js` → `DOMPurify` sanitization → `v-html`)
 - Links in markdown: open in new tab (`target="_blank"`)
@@ -183,8 +185,8 @@ user types → send (click or Enter without Shift)
 Per-answer — each bot response has its own independent feedback pill. Not global.
 
 ### Layout
-- Separate card below bot bubble, 4px gap
-- Same border-radius as bot bubble (4px 12px 12px 12px)
+- Separate card below bot bubble, 8px gap
+- Same border-radius as bot bubble (4px 8px 8px 8px)
 - Same shadow as bot bubble
 - White background
 - Prompt text: "Please rate if this reply has helped you or not." — 14px / 20px (body-medium)
@@ -206,7 +208,8 @@ Default → Helpful clicked
 
 Default → Not helpful clicked
   → "Not helpful" gets active-down style (orange border, yellow background)
-  → Comment input expands below with placeholder "Describe issue"
+  → Comment input expands below: filled input style (grey bg, 48px, bottom border), placeholder "Description"
+  → Hint text below: "What was wrong with the response?"
   → Comment input auto-focuses
   → Does NOT fire API yet
 
@@ -217,8 +220,8 @@ Default → Not helpful clicked
 ```
 
 - Comment can be submitted empty (sends empty string for comment)
-- Checkmark icon gets active styling (`--v-theme-primary` color) only when input has non-whitespace text
-- Comment input: underline style (bottom border only), focus turns border green
+- Checkmark icon: `--v-theme-secondary-dark` (#707070), no color change on active
+- Comment input: filled input style (grey background, 48px min-height, 4px top corners, bottom border), focus turns border green
 - Thank You: shows `mdiCheckCircle` icon + "Thank you for feedback!" text, border changes to `--v-theme-quaternary-dark-2`
 - After 2s: pill fades to opacity 0 and max-height 0, stays in DOM (not removed)
 - Feedback API failure: `console.warn` only, no UI error, no retry
@@ -266,7 +269,7 @@ Request:
 ## Responsive / Mobile
 
 - Breakpoint: 600px (`xs`), checked via `window.innerWidth` at event time
-- Desktop (≥600px): 440×720px floating widget, bottom-right, 12px border-radius, sidebar hover-to-open
+- Desktop (≥600px): 440×720px floating widget, bottom-right, 8px border-radius, sidebar hover-to-open
 - Mobile (<600px): fullscreen `inset: 0`, no border-radius, sidebar as overlay (z-index 2000), tap-only (no hover states)
 - On mobile: sidebar open-button hides when chat is open
 - Scrollbar: 6px wide, `--v-theme-quaternary-dark-2` thumb, transparent track (WebKit custom scrollbar)
@@ -298,7 +301,7 @@ Uses three main styles from `settings.scss`:
 | Token | Alias | Size / Line-height / Weight | Usage |
 |---|---|---|---|
 | body-large | Body 1 | 16px / 24px / 400 | Input field text |
-| body-medium | Body 2 | 14px / 20px / 400 | Chat bubbles, feedback prompt, feedback comment input |
+| body-medium | Body 2 | 14px / 20px / 400 | Chat bubbles, feedback prompt |
 | body-small | Caption | 12px / 16px / 400 | Header subtitle, chips, hint text, privacy text, feedback buttons |
 
 Additional:
@@ -313,8 +316,9 @@ Additional:
 | Token | Hex | Usage |
 |---|---|---|
 | `--v-theme-primary` | #2ECC71 | Accent color, input focus border, links, user bubble border, accept button |
-| `--v-theme-primary-dark` | #212121 | Primary text color, send icon |
-| `--v-theme-secondary-dark` | #707070 | Secondary text, input border, icons, placeholder (at 38% opacity) |
+| `--v-theme-primary-dark` | #212121 | Primary text color |
+| `--v-theme-secondary-dark` | #707070 | Secondary text, input border, placeholder (at 38% opacity) |
+| `--v-theme-icon-default` | #707070 | Close button icon, send button icon, chip icons |
 | `--v-theme-quaternary-dark` | #EEEEEE | Chip backgrounds, hover fills, feedback button backgrounds |
 | `--v-theme-quaternary-dark-2` | #CCCCCC | Darker hover states, scrollbar thumb, thank-you border |
 | `--v-theme-input-background` | #F5F5F5 | Input field fill, widget background, code blocks |
