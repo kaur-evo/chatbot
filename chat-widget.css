@@ -59,7 +59,7 @@
 /* ===== Widget shell ===== */
 .ev-widget {
   background: var(--v-theme-input-background);
-  border-radius: 12px;
+  border-radius: 8px;
   box-shadow: var(--ev-shadow-card);
   display: flex;
   flex-direction: column;
@@ -75,7 +75,7 @@
   background: var(--v-theme-white);
   flex-shrink: 0;
   z-index: 2;
-  border-radius: 12px 12px 0 0;
+  border-radius: 8px 8px 0 0;
   overflow: visible;
 }
 
@@ -164,7 +164,7 @@
 /* ===== Bubbles ===== */
 /* body-medium (Body 2): 14px / 20px / 400 */
 .ev-bubble {
-  padding: 10px 14px;
+  padding: 8px 16px;
   font-size: 14px;
   line-height: 20px;
   word-wrap: break-word;
@@ -175,7 +175,7 @@
 .ev-bubble-bot {
   background: var(--v-theme-white);
   color: var(--v-theme-primary-dark);
-  border-radius: 4px 12px 12px 12px;
+  border-radius: 4px 8px 8px 8px;
   box-shadow: 0px 1px 3px rgba(0,0,0,0.2), 0px 2px 2px rgba(0,0,0,0.12), 0px 0px 2px rgba(0,0,0,0.14);
 }
 
@@ -278,7 +278,7 @@
   flex-direction: column;
   gap: 8px;
   z-index: 2;
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 8px 8px;
 }
 
 /* Privacy notice */
@@ -433,10 +433,10 @@
 /* ===== Feedback pill ===== */
 .ev-feedback {
   background: var(--v-theme-white);
-  border-radius: 4px 12px 12px 12px;
+  border-radius: 4px 8px 8px 8px;
   box-shadow: 0px 1px 3px rgba(0,0,0,0.2), 0px 2px 2px rgba(0,0,0,0.12), 0px 0px 2px rgba(0,0,0,0.14);
-  padding: 10px 14px;
-  margin-top: 4px;
+  padding: 8px 16px;
+  margin-top: 8px;
   max-width: 373px;
   transition: opacity 0.4s ease, max-height 0.4s ease;
   overflow: hidden;
