@@ -293,7 +293,6 @@ function EvoconChat(containerEl, options) {
 
     function showThanks() {
       wrap.innerHTML = '';
-      wrap.style.border = '1px solid var(--v-theme-quaternary-dark-2)';
       var thanks = document.createElement('div');
       thanks.className = 'ev-feedback-thanks';
       thanks.innerHTML = ICONS.checkCircle + ' Thank you for feedback!';

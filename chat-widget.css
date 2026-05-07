@@ -134,7 +134,7 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  background: var(--v-theme-input-background);
+  background: var(--v-theme-quaternary-dark);
   scroll-behavior: smooth;
 }
 .ev-messages::-webkit-scrollbar { width: 6px; }
@@ -183,7 +183,6 @@
   color: var(--v-theme-primary-dark);
   border: 1px solid var(--v-theme-primary);
   border-radius: 8px 4px 8px 8px;
-  box-shadow: 0px 1px 5px rgba(0,0,0,0.25), 0px 2px 2px rgba(0,0,0,0.12), 0px 3px 1px -2px rgba(0,0,0,0.12);
 }
 
 /* Markdown inside bot bubbles */
