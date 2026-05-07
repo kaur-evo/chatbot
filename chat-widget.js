@@ -59,7 +59,7 @@ function EvoconChat(containerEl, options) {
   const CHAT_ENDPOINT = '/chat';
   const FEEDBACK_ENDPOINT = '/feedback';
 
-  const GREETING_TEXT = "Hello! I'm your AI support assistant.\nAsk me about Evocon functionality and I'll try to help. For full Evocon documentation, see below:";
+  const GREETING_TEXT = "Hi! Ask me anything about Evocon \u2014 how features work, how to set things up, and anything else. I\u2019ll answer directly, with links to the docs if you want to read more.";
   const GREETING_REFS = [
     { label: 'Evocon Help & Support', url: HELP_URL, icon: 'help' }
   ];
@@ -481,7 +481,7 @@ function EvoconChat(containerEl, options) {
     // Hint text
     if (hintEl) {
       if (overLimit) {
-        hintEl.textContent = 'Message too long, max ' + CHAR_LIMIT + ' characters.';
+        hintEl.textContent = 'Message too long, max ' + CHAR_LIMIT + ' characters';
         hintEl.classList.add('ev-input-hint-text--error');
       } else {
         hintEl.textContent = HINT_DEFAULT;

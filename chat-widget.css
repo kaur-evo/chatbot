@@ -181,6 +181,7 @@
 .ev-bubble-user {
   background: color-mix(in srgb, var(--v-theme-primary) 12%, transparent);
   color: var(--v-theme-primary-dark);
+  border: 1px solid var(--v-theme-primary);
   border-radius: 8px 4px 8px 8px;
 }
 
